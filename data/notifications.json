@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "userId": 2,
+        "message": "Your application to be an Organizer was accepted!"
+    },
+    {
+        "id": 1,
+        "userId": 1,
+        "message": "A new post has been created: Fun Run"
+    },
+    {
+        "id": 1,
+        "userId": 2,
+        "message": "A new post has been created: Fun Run"
+    },
+    {
+        "id": 4,
+        "userId": 3,
+        "message": "Your application to join the event 'Fun Run' was accepted!"
+    },
+    {
+        "id": 1,
+        "userId": 1,
+        "message": "A new post has been created: Basketball Game"
+    },
+    {
+        "id": 1,
+        "userId": 2,
+        "message": "A new post has been created: Basketball Game"
+    },
+    {
+        "id": 1,
+        "userId": 3,
+        "message": "A new post has been created: Basketball Game"
+    },
+    {
+        "id": 8,
+        "userId": 3,
+        "message": "The event you joined, Fun Run, has been deleted. Reason: "
+    },
+    {
+        "id": 1,
+        "userId": 1,
+        "message": "A new post has been created:  Volleyball"
+    },
+    {
+        "id": 1,
+        "userId": 2,
+        "message": "A new post has been created:  Volleyball"
+    },
+    {
+        "id": 1,
+        "userId": 3,
+        "message": "A new post has been created:  Volleyball"
+    },
+    {
+        "id": 1,
+        "userId": 1,
+        "message": "A new post has been created:  Metro Event Lessons"
+    },
+    {
+        "id": 1,
+        "userId": 2,
+        "message": "A new post has been created:  Metro Event Lessons"
+    },
+    {
+        "id": 1,
+        "userId": 3,
+        "message": "A new post has been created:  Metro Event Lessons"
+    },
+    {
+        "id": 15,
+        "userId": 3,
+        "message": "Your application to join the event ' Metro Event Lessons' was accepted!"
+    },
+    {
+        "id": 16,
+        "userId": 3,
+        "message": "Your application to join the event ' Volleyball' was accepted!"
+    },
+    {
+        "id": 17,
+        "userId": 4,
+        "message": "Your application to be an Organizer was accepted!"
+    },
+    {
+        "id": 18,
+        "userId": 5,
+        "message": "Your application was rejected."
+    }
+]

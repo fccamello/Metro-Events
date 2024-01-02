@@ -1,0 +1,23 @@
+[
+    {
+        "postId": 1,
+        "id": 1,
+        "name": "User1",
+        "email": "User1@gmail.com",
+        "body": "Nice event!"
+    },
+    {
+        "postId": 3,
+        "id": 2,
+        "name": "User1",
+        "email": "User1@gmail.com",
+        "body": "Nice game!"
+    },
+    {
+        "postId": 3,
+        "id": 3,
+        "name": "User1",
+        "email": "User1@gmail.com",
+        "body": "Nice game 2.0!"
+    }
+]

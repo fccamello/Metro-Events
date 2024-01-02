@@ -1,0 +1,33 @@
+{
+    "1": {
+        "uid": 2,
+        "id": 2,
+        "title": "Basketball Game",
+        "body": "Basketball Game for everyone!",
+        "location": "Cebu City",
+        "date": "2024-01-18",
+        "participants": []
+    },
+    "2": {
+        "uid": 2,
+        "id": 3,
+        "title": " Volleyball",
+        "body": " Volleyball for all!",
+        "location": "Manila, Philippines",
+        "date": "2024-01-13",
+        "participants": [
+            3
+        ]
+    },
+    "3": {
+        "uid": 2,
+        "id": 4,
+        "title": " Metro Event Lessons",
+        "body": " Metro Event Lessons",
+        "location": "CIT-U",
+        "date": "2024-01-19",
+        "participants": [
+            3
+        ]
+    }
+}

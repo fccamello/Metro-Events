@@ -1,0 +1,29 @@
+[
+    {
+        "user_id": 2,
+        "request_id": 1,
+        "username": "Organizer1",
+        "name": "Organizer1",
+        "email": "Organizer1@gmail.com",
+        "request_time": "2024-Jan-02 06:58:56",
+        "status": "accepted"
+    },
+    {
+        "user_id": 4,
+        "request_id": 3,
+        "username": "Organizer2",
+        "name": "Organizer2",
+        "email": "Organizer2@gmail.com",
+        "request_time": "2024-Jan-02 07:05:41",
+        "status": "accepted"
+    },
+    {
+        "user_id": 5,
+        "request_id": 5,
+        "username": "Organizer3",
+        "name": "Organizer3",
+        "email": "Organizer3",
+        "request_time": "2024-Jan-02 07:06:06",
+        "status": "rejected"
+    }
+]

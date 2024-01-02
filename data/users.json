@@ -1,0 +1,47 @@
+[
+    {
+        "id": 1,
+        "name": "admin",
+        "username": "admin",
+        "email": "admin",
+        "company": "admin",
+        "type": "admin"
+    },
+    {
+        "id": 2,
+        "name": "Organizer1",
+        "username": "Organizer1",
+        "email": "Organizer1@gmail.com",
+        "company": "Organizer1 Company",
+        "type": "organizer"
+    },
+    {
+        "id": 3,
+        "name": "User1",
+        "username": "User1",
+        "email": "User1@gmail.com",
+        "company": "User1 Company",
+        "type": "user",
+        "joined_events": [
+            "1",
+            "4",
+            "3"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Organizer2",
+        "username": "Organizer2",
+        "email": "Organizer2@gmail.com",
+        "company": "Organizer2 Company",
+        "type": "organizer"
+    },
+    {
+        "id": 5,
+        "name": "Organizer3",
+        "username": "Organizer3",
+        "email": "Organizer3",
+        "company": "Organizer3",
+        "type": "user"
+    }
+]
