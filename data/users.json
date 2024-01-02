@@ -17,15 +17,16 @@
     },
     {
         "id": 3,
-        "name": "User1",
-        "username": "User1",
-        "email": "User1@gmail.com",
-        "company": "User1 Company",
+        "name": "user",
+        "username": "user",
+        "email": "user@gmail.com",
+        "company": "User Company",
         "type": "user",
         "joined_events": [
             "1",
-            "4",
-            "3"
+            "3",
+            "7",
+            "4"
         ]
     },
     {
@@ -35,13 +36,5 @@
         "email": "Organizer2@gmail.com",
         "company": "Organizer2 Company",
         "type": "organizer"
-    },
-    {
-        "id": 5,
-        "name": "Organizer3",
-        "username": "Organizer3",
-        "email": "Organizer3",
-        "company": "Organizer3",
-        "type": "user"
     }
 ]

@@ -27,20 +27,14 @@ include("header.php");
         </div>
 </div>
 
-
-
-
-
 <br>
 <br>
 <br>
 <div class="container">
     <?php
-    // Read the JSON file
     $jsonFile = '../data/posts.json';
     $jsonData = file_get_contents($jsonFile);
 
-    // Decode JSON data
     $events = json_decode($jsonData, true);
 
     if (empty($events)) {

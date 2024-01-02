@@ -15,7 +15,7 @@ error_reporting(E_ALL);
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
 
           <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-            <div style="padding-top: 25px; font-size: 45px "> METRO EVENT </div>
+            <div style="padding-top: 25px; font-size: 45px "> METRO EVENTS </div>
         </a>
 
 

@@ -7,86 +7,151 @@
     {
         "id": 1,
         "userId": 1,
-        "message": "A new post has been created: Fun Run"
+        "message": "A new post has been created:  Event 1"
     },
     {
         "id": 1,
         "userId": 2,
-        "message": "A new post has been created: Fun Run"
-    },
-    {
-        "id": 4,
-        "userId": 3,
-        "message": "Your application to join the event 'Fun Run' was accepted!"
+        "message": "A new post has been created:  Event 1"
     },
     {
         "id": 1,
         "userId": 1,
-        "message": "A new post has been created: Basketball Game"
+        "message": "A new post has been created:   Event 2"
     },
     {
         "id": 1,
         "userId": 2,
-        "message": "A new post has been created: Basketball Game"
+        "message": "A new post has been created:   Event 2"
     },
     {
-        "id": 1,
+        "id": 6,
         "userId": 3,
-        "message": "A new post has been created: Basketball Game"
+        "message": "Your application to join the event ' Event 1' was accepted!"
+    },
+    {
+        "id": 7,
+        "userId": 3,
+        "message": "Your application for the event '  Event 2' was rejected."
     },
     {
         "id": 8,
         "userId": 3,
-        "message": "The event you joined, Fun Run, has been deleted. Reason: "
+        "message": "The event you joined,  Event 1, has been deleted. Reason: Conflicts "
     },
     {
         "id": 1,
         "userId": 1,
-        "message": "A new post has been created:  Volleyball"
+        "message": "A new post has been created: Event 3"
     },
     {
         "id": 1,
         "userId": 2,
-        "message": "A new post has been created:  Volleyball"
+        "message": "A new post has been created: Event 3"
     },
     {
         "id": 1,
         "userId": 3,
-        "message": "A new post has been created:  Volleyball"
+        "message": "A new post has been created: Event 3"
     },
     {
-        "id": 1,
-        "userId": 1,
-        "message": "A new post has been created:  Metro Event Lessons"
-    },
-    {
-        "id": 1,
-        "userId": 2,
-        "message": "A new post has been created:  Metro Event Lessons"
-    },
-    {
-        "id": 1,
+        "id": 12,
         "userId": 3,
-        "message": "A new post has been created:  Metro Event Lessons"
+        "message": "Your application to join the event 'Event 3' was accepted!"
     },
     {
-        "id": 15,
-        "userId": 3,
-        "message": "Your application to join the event ' Metro Event Lessons' was accepted!"
-    },
-    {
-        "id": 16,
-        "userId": 3,
-        "message": "Your application to join the event ' Volleyball' was accepted!"
-    },
-    {
-        "id": 17,
+        "id": 13,
         "userId": 4,
         "message": "Your application to be an Organizer was accepted!"
     },
     {
-        "id": 18,
-        "userId": 5,
-        "message": "Your application was rejected."
+        "id": 1,
+        "userId": 1,
+        "message": "A new post has been created:  Event 4"
+    },
+    {
+        "id": 1,
+        "userId": 2,
+        "message": "A new post has been created:  Event 4"
+    },
+    {
+        "id": 1,
+        "userId": 3,
+        "message": "A new post has been created:  Event 4"
+    },
+    {
+        "id": 1,
+        "userId": 4,
+        "message": "A new post has been created:  Event 4"
+    },
+    {
+        "id": 1,
+        "userId": 1,
+        "message": "A new post has been created:  Event 4"
+    },
+    {
+        "id": 1,
+        "userId": 2,
+        "message": "A new post has been created:  Event 4"
+    },
+    {
+        "id": 1,
+        "userId": 3,
+        "message": "A new post has been created:  Event 4"
+    },
+    {
+        "id": 1,
+        "userId": 4,
+        "message": "A new post has been created:  Event 4"
+    },
+    {
+        "id": 1,
+        "userId": 1,
+        "message": "A new post has been created:  Event 5"
+    },
+    {
+        "id": 1,
+        "userId": 2,
+        "message": "A new post has been created:  Event 5"
+    },
+    {
+        "id": 1,
+        "userId": 3,
+        "message": "A new post has been created:  Event 5"
+    },
+    {
+        "id": 1,
+        "userId": 4,
+        "message": "A new post has been created:  Event 5"
+    },
+    {
+        "id": 1,
+        "userId": 1,
+        "message": "A new post has been created:  Event 5"
+    },
+    {
+        "id": 1,
+        "userId": 2,
+        "message": "A new post has been created:  Event 5"
+    },
+    {
+        "id": 1,
+        "userId": 3,
+        "message": "A new post has been created:  Event 5"
+    },
+    {
+        "id": 1,
+        "userId": 4,
+        "message": "A new post has been created:  Event 5"
+    },
+    {
+        "id": 30,
+        "userId": 3,
+        "message": "Your application to join the event ' Event 5' was accepted!"
+    },
+    {
+        "id": 31,
+        "userId": 3,
+        "message": "Your application to join the event ' Event 4' was accepted!"
     }
 ]

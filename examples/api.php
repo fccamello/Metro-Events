@@ -28,7 +28,6 @@ if (isset($_SESSION["user"])){
     $userData = json_decode($_SESSION["user"],true);
 }
 
-// function get users from json
 function getUsersData()
 {
     global $usersJSON;
@@ -108,7 +107,7 @@ function counterIdReqEvent($jsonData)
     $initial = 0;
     foreach ($jsonData as $obj)
     {
-        if ($initial < $obj["request_id"]) // Change to check the request_id
+        if ($initial < $obj["request_id"])
         {
             $initial = $obj["request_id"];
         }
@@ -126,8 +125,6 @@ function addComment($newComment){
 }
 
 
-
-
 function logIn($username)
 {
     $jsonData = getUsersData();
@@ -143,8 +140,6 @@ function logIn($username)
         {
             return $user;
         }
-
-
 
     }
 }
@@ -238,7 +233,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     'date' => $_POST['date'],
                     'participants' => []
                 );
-                $posts[count($posts) - 1]['participants'] = []; // Assuming the new post is the last element in $posts
+                $posts[count($posts) - 1]['participants'] = [];
 
                 file_put_contents($postsJSON, json_encode($posts, JSON_PRETTY_PRINT));
                 sendNotificationToAll("A new post has been created: " . $_POST['title']);
@@ -272,13 +267,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("Location: index.php");
     }  elseif (isset($_POST["delete_post"])) {
     $deletedPostId = intval($_POST["post-id"]);
-    $deleteReason = $_POST["delete_reason"]; // Fetch the reason entered by the user
+    $deleteReason = $_POST["delete_reason"];
     $deletedPostTitle = '';
 
-    // Fetch posts data
     $jsonData = getPostsData();
 
-    // Find the post to be deleted
     foreach ($jsonData as $index => $post) {
         if ($post["id"] === $deletedPostId) {
             $deletedPostTitle = $post['title'];
@@ -290,15 +283,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 
-    // Update the posts data file
     file_put_contents($postsJSON, json_encode($jsonData, JSON_PRETTY_PRINT));
 
-    // Notify each participant about the deletion
     foreach ($deletedParticipantIds as $participantId) {
         sendNotification($participantId, "The event you joined, " . $deletedPostTitle . ", has been deleted. Reason: " . $deleteReason);
     }
 
-    // Deleting comments and redirecting logic goes here
     $jsonData = getCommentsData();
     foreach ($jsonData as $index => $comment) {
         if ($comment["id"] == intval($_POST["comment-id"])) {
@@ -332,72 +322,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             'name' => $userData['name'],
             'email' => $userData['email'],
             'request_time' => date("Y-M-d H:i:s"),
-            'status' => 'pending' // Initial status is 'pending'
+            'status' => 'pending'
         ];
 
         file_put_contents($requestsJSON, json_encode($requestsData, JSON_PRETTY_PRINT));
 
         echo '<script>alert("Request as an organizer sent!");</script>';
     }
-//    elseif (isset($_POST["join_event"]) && isset($_SESSION["user"])) {
-//
-//
-//        $userData = json_decode($_SESSION["user"], true);
-//        $userId = $userData["id"];
-//
-//        $eventId = $_POST["post-id"];
-//        $usersData = getUsersData();
-//
-//
-//        // Load existing requests or create an empty array
-//        $eventRequests = file_exists($requestsEventJSON) ? json_decode(file_get_contents($requestsEventJSON), true) : [];
-//
-//        // Check if the user has already sent a request for this event
-//        $existingRequest = array_filter($eventRequests, function ($request) use ($userId, $eventId) {
-//            return $request['user_id'] == $userId && $request['event_id'] == $eventId;
-//        });
-//
-//        if (!empty($existingRequest)) {
-//            // User has already sent a request for this event
-//            echo '<script>alert("You have already sent a request for this event.");</script>';
-//        } else {
-//            // Get the event details from posts.json based on the event ID
-//            $posts = getPostsData();
-//            $event = array_values(array_filter($posts, function ($post) use ($eventId) {
-//                return $post['id'] == $eventId;
-//            }))[0];
-//
-//            // Check if the event was found
-//            if ($event) {
-//                // Add a new request to the eventRequests array including event title
-//                $newRequest = [
-//                    'user_id' => $userId,
-//                    'request_id' => counterIdReqEvent(getRequestsDataEvent()),
-//                    'username' => $userData['username'],
-//                    'name' => $userData['name'],
-//                    'event_id' => $eventId,
-//                    'event_title' => $event['title'],
-//                    'request_time' => (new DateTime())->format('M-d-Y H:i:s'),
-//                    'status' => 'pending' // Initial status is 'pending'
-//                ];
-//
-//                $eventRequests[] = $newRequest;
-//
-//                // Save the updated event requests to the requests.json file
-//                file_put_contents($requestsEventJSON, json_encode($eventRequests, JSON_PRETTY_PRINT));
-//
-//                // Display a success message or redirect as needed
-//                echo '<script>alert("Request to join event ' . $event['title'] . ' sent successfully!");</script>';
-//
-//
-//            }
-//        }
-//
-//    }
-//
-//
-//
-//}
 
     elseif (isset($_POST["join_event"]) && isset($_SESSION["user"])) {
 
@@ -407,27 +338,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $eventId = $_POST["post-id"];
         $usersData = getUsersData();
 
-        // Load existing requests or create an empty array
         $eventRequests = file_exists($requestsEventJSON) ? json_decode(file_get_contents($requestsEventJSON), true) : [];
 
-        // Check if the user has already sent a request for this event
         $existingRequest = array_filter($eventRequests, function ($request) use ($userId, $eventId) {
             return $request['user_id'] == $userId && $request['event_id'] == $eventId;
         });
 
         if (!empty($existingRequest)) {
-            // User has already sent a request for this event
             echo '<script>alert("You have already sent a request for this event.");</script>';
         } else {
-            // Get the event details from posts.json based on the event ID
             $posts = getPostsData();
             $event = array_values(array_filter($posts, function ($post) use ($eventId) {
                 return $post['id'] == $eventId;
             }))[0];
 
-            // Check if the event was found
             if ($event) {
-                // Add a new request to the eventRequests array including event title
                 $newRequest = [
                     'user_id' => $userId,
                     'request_id' => counterIdReqEvent(getRequestsDataEvent()),
@@ -436,15 +361,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     'event_id' => $eventId,
                     'event_title' => $event['title'],
                     'request_time' => (new DateTime())->format('M-d-Y H:i:s'),
-                    'status' => 'pending' // Initial status is 'pending'
+                    'status' => 'pending'
                 ];
 
                 $eventRequests[] = $newRequest;
 
-                // Save the updated event requests to the requests.json file
                 file_put_contents($requestsEventJSON, json_encode($eventRequests, JSON_PRETTY_PRINT));
 
-                // Display a success message or redirect as needed
                 echo '<script>alert("Request to join event ' . $event['title'] . ' sent successfully!");</script>';
 
 
@@ -480,7 +403,6 @@ function sendNotificationToAll($message){
     file_put_contents($notificationJSON, json_encode($notifications, JSON_PRETTY_PRINT));
 }
 
-// Function to get pending organizer requests
 function getPendingOrganizerRequests() {
     global $requestsJSON;
     if (!file_exists($requestsJSON)) {
@@ -519,14 +441,11 @@ function displayOrganizerRequests() {
             $requestsHTML .= '<strong>Request Time:</strong> ' . $request['request_time'] . '<br>';
             $requestsHTML .= '<strong>Status:</strong> ' . $request['status'] . '<br> <br>';
 
-            // Add buttons to accept/reject requests
             $requestsHTML .= '<form action="../examples/handle_requests.php" method="post">';
             $requestsHTML .= '<input type="hidden" name="request_id" value="' . $request['request_id'] . '">';
 
-            // Accept request button
             $requestsHTML .= '<button type="submit" class ="btn btn-success" name="action" value="accepted">Accept</button>     ';
 
-            // Reject request button
             $requestsHTML .= '<button type="submit"  class ="btn btn-danger" name="action" value="rejected">Reject</button>';
             $requestsHTML .= '</form>';
 
@@ -574,17 +493,14 @@ function displayEventRequests() {
         $requestsHTML .= '<strong>Request Time:</strong> ' . $request['request_time'] . '<br>';
         $requestsHTML .= '<strong>Status:</strong> ' . $request['status'] . '<br>';
 
-        // Add buttons to accept/reject requests
         $requestsHTML .= '<form action="../examples/handle_event_request.php" method="post">';
         $requestsHTML .= '<input type="hidden" name="user_id" value="' . $request['user_id'] . '">';
         $requestsHTML .= '<input type="hidden" name="event_id" value="' . $request['event_id'] . '">';
         $requestsHTML .= '<input type="hidden" name="request_id" value="' . $request['request_id'] . '">';
 
 
-        // Accept request button
         $requestsHTML .= '<br> <button type="submit" class="btn btn-success" name="action" value="accepted">Accept</button>      ';
 
-        // Reject request button
         $requestsHTML .= '<button type="submit" class = "btn btn-danger" name="action" value="rejected">Reject</button>';
         $requestsHTML .= '</form>';
 
@@ -667,59 +583,27 @@ function displayJoinedEvents()
 
 
 
- //Function to add notifications to users.json
-//function addNotificationToUser($userId, $notification)
-//{
-//    $usersData = getUsersData();
-//    global $usersJSON;
-//
-//    // Find the user by ID
-//    foreach ($usersData as &$user) {
-//        if ($user['id'] == $userId) {
-//            // Add the notification to the user's data
-//            if (!isset($user['notifications'])) {
-//                $user['notifications'] = [];
-//            }
-//            $user['notifications'][] = $notification;
-//
-//            break; // Stop the loop once the user is found and updated
-//        }
-//    }
-//
-//    // Save the updated data back to users.json
-//    file_put_contents($usersJSON, json_encode($usersData, JSON_PRETTY_PRINT));
-//}
-
- //Check if an accepted request exists and update notifications
-
 function sendNotification($userID, $message) {
     $notificationJSON = '../data/notifications.json';
     $usersJSON = '../data/users.json';
 
-    // Assuming these functions retrieve the data
     $notifications = json_decode(file_get_contents($notificationJSON), true);
     $registeredUsers = json_decode(file_get_contents($usersJSON), true);
 
-    // Function to get the next notification ID
     function counterId22($data) {
-        // Logic to calculate the next ID
-        return count($data) + 1; // Simple example, you may need more robust logic
+        return count($data) + 1;
     }
 
-    // Generating a new notification ID
     $newNotifID = counterId22($notifications);
 
-    // Creating a new notification
     $newNotif = [
         'id' => $newNotifID,
         'userId' => $userID,
         'message' => $message
     ];
 
-    // Adding the new notification to the notifications array
     $notifications[] = $newNotif;
 
-    // Writing the updated notifications back to the JSON file
     file_put_contents($notificationJSON, json_encode($notifications, JSON_PRETTY_PRINT));
 }
 
@@ -731,7 +615,6 @@ function displayNotificationsForCurrentUser() {
         $userData = json_decode($_SESSION["user"], true);
 
 
-    // Assuming user ID is stored in the session
     if (!isset($userData)) {
         return 'No user logged in.';
     }
@@ -818,7 +701,7 @@ function getPosts()
             }
         }
 
-        $currentUserJoined = false; // Assuming the user hasn't joined by default
+        $currentUserJoined = false;
         if ($userData && isset($userData['id']) && isset($parr['participants'])) {
             $currentUserJoined = in_array($userData['id'], $parr['participants']);
         }
@@ -873,7 +756,7 @@ function getPosts()
         </div>';
 
         if ($userData && $userData["username"] != "admin"  && $userData["type"] != "organizer") {
-            $userID = $userData['id']; // Assuming $userData contains the current user's data
+            $userID = $userData['id'];
 
             if (!(in_array($userID, $parr['participants']))) {
                 $str .= '<form action="index.php" method="post">
@@ -887,9 +770,8 @@ function getPosts()
         }
 
         if($userData) {
-            $userID = $userData['id']; // Assuming $userData contains the current user's data
+            $userID = $userData['id'];
             if (in_array($userID, $parr['participants'])) {
-                // Allow the user to write a review
                 $str .= '<form action="index.php" method="POST" >
                 <input type="hidden" name="post-id" value="' . $parr["id"] . '">
                 <div class="mb-3">
@@ -901,21 +783,6 @@ function getPosts()
             </form>';
             }
 
-//
-//        if ($userData && $userData["username"] != "admin"  && $userData["type"] != "organizer") {
-//            $str .= '<form action="index.php" method="post">
-//                        <div class="mb-3">
-//                            <label for="comment" class="form-label">Write a review: </label>
-//                            <textarea class="form-control" id="commment" name="comment" rows="1"></textarea>
-//                            <input type="hidden" name="post-id" value="' . $parr["id"] . '">
-//                        </div>
-//                        <button type="submit" class="btn btn-warning" name="create_comment">Write Review</button>
-//                        <button type="submit" class="btn btn-warning" name="join_event">Join Event</button>
-//
-//                    </form>';
-//        }
-
-// Your PHP logic goes here
 
             if ($userData && $userData["id"] === $parr["uid"]["id"]) {
                 $str .= '<form action="index.php" method="POST" >
@@ -929,33 +796,6 @@ function getPosts()
             </form>';
             }
         }
-//            if ($userData && $userData["id"] === $parr["uid"]["id"]) {
-//                $str .= '<form action="index.php" method="POST">
-//        <input type="hidden" name="post-id" value="' . $parr["id"] . '">
-//        <button type="button" class="btn btn-danger" onclick="toggleDeleteReason()" style="width: 120px">Delete Event</button>
-//        <div id="deleteReason" style="display: none;">
-//            <label for="delete_reason">Reason for deleting:</label><br>
-//            <textarea id="delete_reason" name="delete_reason" rows="4" cols="50"></textarea><br>
-//            <input type="submit" name="delete_post" value="Confirm Delete">
-//        </div>
-//    </form>';
-//
-//                // JavaScript function to toggle delete reason visibility
-//                $str .= '<script>
-//        function toggleDeleteReason() {
-//            var deleteReason = document.getElementById("deleteReason");
-//            if (deleteReason.style.display === "none") {
-//                deleteReason.style.display = "block";
-//            } else {
-//                deleteReason.style.display = "none";
-//            }
-//        }
-//    </script>';
-//            }
-
-
-
-
 
 
         $str.='</div>
@@ -973,22 +813,7 @@ function getPosts()
 }
 ?>
 
-<script>
-    // Get the button and count elements by their IDs
-    const thumbsDownButton = document.getElementById('thumbs-down-btn');
-    const thumbsDownCount = document.getElementById('thumbs-down-count');
 
-    // Initialize a counter variable to hold the current count
-    let count = parseInt(thumbsDownCount.innerText); // Parse the initial count from the element's text
-
-    // Add a click event listener to the button
-    thumbsDownButton.addEventListener('click', function() {
-        // Increment the count and update the text content of the count element
-        count++;
-        thumbsDownCount.innerText = "count";
-    });
-
-</script>
 
 
 
